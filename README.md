@@ -1,19 +1,51 @@
 # Denied-Schema-Public
-1. [Summary](#Summary)
-2. [Causes] (#Causes)
-3. [Solutions](#Solutions)
-    
-# Summary
+1. [overview] (#overview)
+2. [Troubleshooting] 
+    1. [Causes] (#causes)
+    2. [Solutions] (#solutions)
+3. [FlowWorking] (#flowWorking)
+# Overview
 The error "permission denied for schema public" occurs when a user or role does not have the necessary permissions to perform an action on the "public" schema.
+
 # Causes
-* The user or role does not have the USAGE privilege on the "public" schema. This means they cannot access any objects in the schema.
-* The user or role does not have the SELECT privilege on a specific table in the "public" schema. This means they cannot query that table.
-* The user or role does not have the EXECUTE privilege on a specific function or procedure in the "public" schema. This means they cannot execute that function or  procedure.
+* Normally, after allowing a user to CREATE tables within a database, you didn't have to specifically define that they had the permission to do that within a SCHEMA, since public would be the default one.
 * The user or role does not have the CONNECT privilege on the database. This means they cannot connect to the database at all.
+
+
 # Solutions
 * To resolve this error, you need to identify the specific cause and grant the appropriate permissions to the user or role.
-
+* For example your need to add PRIVILEGES from Role to correct database
 - Grant USAGE privilege on the "public" schema: 
+
+# FlowWorking 
+* Create Role
+```bash
+ sqlCREATE ROLE your_role_name WITH LOGIN; 
+```
+- `in case you want add password you can change cmd to` 
+```bash 
+CREATE ROLE your_role_name WITH LOGIN PASSWORD 'your_password';
+```
+* Create DataBase
+```bash 
+CREATE DATABASE your_database_name ;
+```
+* Grant All Full Access `All Privileges` From Role(User) to Database 
+```bash 
+GRANT ALL PRIVILEGES ON DATABASE your_database_name TO your_role;
+```
+* Now you need to connet with your database with cmd `\c` or `\connect `
+```bash 
+\c your_database_name
+```
+* Grant Schema Public From `Your Database` to `Your Role` 
+```bash 
+GRANT ALL ON SCHEMA public TO your_role_name ;
+```
+AFTER THIS YOUR CAN RUN YOUR CMD AGAIN TO SEE THE MAGIC 
+
+# ** Some Option Your Miss , Can Be Add You Can Add ** 
+
 ```bash
     GRANT USAGE ON SCHEMA public TO your_role;
 ```
@@ -28,13 +60,4 @@ The error "permission denied for schema public" occurs when a user or role does 
 * Grant CONNECT privilege on the database:
 ```bash 
     GRANT CONNECT ON DATABASE mydatabase TO your_role;
-```
-# ** How to create 1 role(user) in postgres ** 
-## Create role
-```bash
- sqlCREATE ROLE your_role_name WITH LOGIN; 
-```
-- in case you want add password you can change cmd to 
-```bash 
-CREATE ROLE your_role_name WITH LOGIN PASSWORD 'your_password';
 ```
