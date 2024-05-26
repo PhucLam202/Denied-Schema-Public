@@ -1,6 +1,6 @@
 # Denied-Schema-Public
 1. [overview](#overview)
-2. [Troubleshooting] 
+2. [troubleshooting](#causes)
     1.  [causes](#causes)
     2.  [solutions](#solutions)  
 3. [flowworking](#flowworking)
