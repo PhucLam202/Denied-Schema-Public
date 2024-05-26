@@ -9,26 +9,29 @@ The error "permission denied for schema public" occurs when a user or role does 
 # Solutions
 * To resolve this error, you need to identify the specific cause and grant the appropriate permissions to the user or role.
 
-## Cấp Quyền CHo Role
+# Grant for Role
 * Grant USAGE privilege on the "public" schema: 
-- sql 
+```bash
     GRANT USAGE ON SCHEMA public TO your_role;
-
+```
 * Grant SELECT privilege on the "mytable" table:
-- sql 
-    GRANT SELECT ON TABLE public.mytable TO your_role;
-
+```bash   
+ GRANT SELECT ON TABLE public.mytable TO your_role;
+```
 * Grant EXECUTE privilege on the "myfunction" function:
-- sql 
+```bash
     GRANT EXECUTE ON FUNCTION public.myfunction TO your_role;
-
+```
 * Grant CONNECT privilege on the database:
-- sql 
+```bash 
     GRANT CONNECT ON DATABASE mydatabase TO your_role;
-
+```
 # ** How to create 1 role(user) in postgres ** 
 ## Create role
-* sqlCREATE ROLE your_role_name WITH LOGIN; 
+```bash
+ sqlCREATE ROLE your_role_name WITH LOGIN; 
+```
 - in case you want add password you can change cmd to 
-* sql 
+```bash 
 CREATE ROLE your_role_name WITH LOGIN PASSWORD 'your_password';
+```
