@@ -1,4 +1,8 @@
 # Denied-Schema-Public
+1. [Summary](#Summary)
+2. [Causes] (#Causes)
+3. [Solutions](#Solutions)
+    
 # Summary
 The error "permission denied for schema public" occurs when a user or role does not have the necessary permissions to perform an action on the "public" schema.
 # Causes
@@ -9,8 +13,7 @@ The error "permission denied for schema public" occurs when a user or role does 
 # Solutions
 * To resolve this error, you need to identify the specific cause and grant the appropriate permissions to the user or role.
 
-# Grant for Role
-* Grant USAGE privilege on the "public" schema: 
+- Grant USAGE privilege on the "public" schema: 
 ```bash
     GRANT USAGE ON SCHEMA public TO your_role;
 ```
