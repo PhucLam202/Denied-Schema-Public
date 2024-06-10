@@ -21,7 +21,7 @@ The error "permission denied for schema public" occurs when a user or role does 
 ### FlowWorking 
 1. **Create Role**
 ```bash
- sqlCREATE ROLE your_role_name WITH LOGIN; 
+ CREATE ROLE your_role_name WITH LOGIN; 
 ```
 - `in case you want add password you can change cmd to` 
 ```bash 
