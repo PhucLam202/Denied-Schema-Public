@@ -16,7 +16,13 @@ The error "permission denied for schema public" occurs when a user or role does 
 ### Solutions
 * To resolve this error, you need to identify the specific cause and grant the appropriate permissions to the user or role.
 * For example your need to add PRIVILEGES from Role to correct database
-- Grant USAGE privilege on the "public" schema: 
+- Grant USAGE privilege on the "public" schema:
+  
+> [!NOTE]
+> Make you following all this step
+
+> [!TIP]
+> If you do 4 first step just jumb to step 5
 
 ### FlowWorking 
 1. **Create Role**
